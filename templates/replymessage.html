@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="{{url_for('reply')}}" method="post">
+    {% for v in m %}
+    <label for="sendername">SENDERNAME</label>
+    <input type="" name="username" id="username" value="{{v.username}}">
+    <br>
+    <br>
+    <label for="message">MESSAGE</label>
+    <input type="text" name="message" id="message">
+    <br>
+    <br>
+    <label for="subject">SUBJECT</label>
+    <input type="text" name="subject" id="subject">
+    <br>
+    <input type="submit" value="send">
+    {% endfor %}
+    </form>
+</body>
+</html>

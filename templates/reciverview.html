@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="{{url_for('trashtable')}}" method="post">
+    <table border="2">
+        <tr>
+            <th>messsage id</th>
+            <th>USERNAME</th>
+            <th>MESSAGE</th>
+            <th>SUBJECT</th>
+            <th>DATE</th>
+            <th>TIME</th>
+            <th>STATUS</th>
+        </tr>
+        {% for v in a %}
+        <tr>
+            <td>{{v.id}}</td>
+            <td>{{v.username}}</td>
+            <td>{{v.message}}</td>
+            <td>{{v.subject}}</td>
+            <td>{{v.date}}</td>
+            <td>{{v.time}}</td>
+            <td>{{v.status}}</td>
+
+            <td><a href="{{url_for('fowardmessage',ab=v.id)}}">forward</a></td>
+            <td><a href="{{url_for('replymessage',an=v.id)}}">reply</a></td>
+            <td><input type="checkbox" name="checkboxes" value="{{v.id}}"></td>
+           
+           
+
+        </tr>
+        {% endfor %}
+        <tr>
+            <td>
+            <button type="submit">TRASH</button>
+            </td>
+        </tr>
+
+        
+    </table>
+    {% if get_flashed_messages() %} 
+    {% for msg  in get_flashed_messages() %}
+    <script>
+       alert("{{msg}}")
+    </script> 
+    
+    {% endfor %}
+    {% endif %}
+</form>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <li><a href="{{url_for('view')}}">VIEW</a></li>
+    <br>
+    <li><a href="{{url_for('sendmail')}}">SENDMAIL</a></li>
+    <br>
+    <li><a href="{{url_for('mailview')}}">SENDMAILS</a></li>
+    <br>
+    <li><a href="{{url_for('reciverview')}}">RECIVEDMAILS</a></li>
+    <br>
+    <li><a href="{{url_for('trashview')}}">VIEW_TRASHTABLE</a></li>
+    <br>
+    <li><a href="{{url_for('logout')}}">LOGOUT</a></li>
+
+
+
+
+
+
+
+
+
+    {% if get_flashed_messages() %} 
+    {% for msg  in get_flashed_messages() %}
+    <script>
+       alert("{{msg}}")
+    </script> 
+    
+    {% endfor %}
+    {% endif %}  
+</body>
+</html>

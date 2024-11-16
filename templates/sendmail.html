@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script src="/static/jquery-1.8.3.min.js"></script>
+<script>
+    $(document).ready(function(){
+        $('#recivername').change(function(){
+            var user=$('#recivername').val();
+            $.ajax({
+                url:"{{url_for('found_user')}}",
+                data:{'ab':user},
+                success:function(data)
+                {
+                    if(data.valid =='not found')
+                {
+                    alert('username can not found')
+                }
+
+                }
+            })
+        })
+    })
+</script>
+<body>
+    <form action="{{url_for('mail')}}" method="post">
+        <label for="recivername">ReciverName</label>
+        <input type="text" name="recivername" id="recivername">
+        <br>
+        <br>
+        <label for="message">Message</label>
+        <textarea name="message" id="message"></textarea>
+        <br>
+        <br>
+        <label for="subject">subject</label>
+        <textarea name="subject" id="subject"></textarea>
+        <br>
+        <br>
+        <input type="submit" value="Send">
+    </form>
+    {% if get_flashed_messages() %} 
+    {% for msg  in get_flashed_messages() %}
+    <script>
+       alert("{{msg}}")
+    </script> 
+    
+    {% endfor %}
+    {% endif %}
+</body>
+</html>

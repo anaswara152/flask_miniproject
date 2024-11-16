@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body >
+ <table border="2">
+    {% for i in a %}
+    <tr>
+        <tr>NAME:</tr><tr>{{i.name}}</tr>
+        <br>
+        <br>
+        <tr>GENDER:</tr><tr>{{i.gender}}</tr>
+        <br>
+        <br>
+        <tr>ADDRESS:</tr><tr>{{i.address}}</tr>
+        <br>
+        <br>
+        <tr>COUNTRY:</tr><tr>{{i.country}}</tr>
+        <br>
+        <br>
+        <tr>PHONENUMBER:</tr><tr>{{i.phonenumber}}</tr>
+        <br>
+        <br>
+        <tr>USERNAME:</tr><tr>{{i.username}}</tr>
+        <br>
+        <br>
+        <tr>PASSWORD:</tr><tr>{{i.password}}</tr> 
+        <br>
+        <br>
+        <tr><a href="{{url_for('updateprofile',ab=i.id)}}">UPDATE:</a></tr>  
+        <br>
+        <br>
+        <tr><a href="{{url_for('deleteprofile',ab=i.id)}}">DELETE:</a></tr>       
+     
+    </tr>
+    {% endfor %}
+</table> 
+{% if get_flashed_messages() %} 
+{% for msg  in get_flashed_messages() %}
+<script>
+   alert("{{msg}}")
+</script> 
+
+{% endfor %}
+{% endif %}
+    
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script src="/static/jquery-1.8.3.min.js"></script>
+<script>
+    $(document).ready(function(){
+        $("#username").change(function(){
+          var user=$("#username").val();
+          $.ajax({
+            url:"{{url_for('get_username')}}",
+            data:{'as':user},
+            success:function(data)
+            {
+              if(data.valid == "exist")
+            {
+              alert("username already exist")
+            }
+            }
+          })
+        })
+    })
+</script>
+
+<body>
+    <form action="{{url_for('register')}}" method="post" enctype="multipart/form-data" name="myform">
+        <label for="name">NAME:</label>
+        <input type="text" name="name" id="name">
+        <br>
+        <br>
+        <input type="radio" id="gender" name="gender" value="male">
+          <label for="">MALE:</label><br>
+          <input type="radio" id="gender" name="gender" value="female">
+          <label for="css">FEMALE:</label>
+        <br><br>
+        <label for="address">ADDRESS:</label>
+        <textarea name="address" id="address"></textarea>
+        <br>
+        <br>
+        <label for="country">SELECT COUNTRY:</label>
+        <select name="country" id="country">
+            <option value="india">INDIA</option>
+            <option value="america">AMERICA</option>
+            <option value="china">CHINA</option>
+            <option value="pakistan">PAKISTAN</option>
+         </select>
+         <br>
+         <br>
+         <label for="phonenumber">PHONENUMBER:</label>
+         <input type="text" name="phonenumber" id="phonenumber">
+         <br>
+         <br>
+         <label for="username">USERNAME:</label>
+         <input type="text" name="username" id="username" ><th>@mymail.com </th>
+         <br>
+         <br>
+         <label for="password">PASSWORD:</label>
+         <input type="text" name="password" id="password">
+         <br>
+         <br>
+         <input type="submit" value="REGISTER" >
+    </form>
+    {% if get_flashed_messages() %} 
+{% for msg  in get_flashed_messages() %}
+<script>
+   alert("{{msg}}")
+</script> 
+
+{% endfor %}
+{% endif %}
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="{{url_for('updation')}}" method="post" name="myform">
+        {% for i in a %}
+        <label for="name">NAME:</label>
+        <input type="text" name="name" id="name" value="{{i.name}}">
+        <br>
+        <br>
+        {% if i.gender==male %}
+        <input type="radio" id="gender" name="gender" checked="true">
+          <label for="">MALE:</label><br>
+          <input type="radio" id="gender" name="gender">
+          <label for="css">FEMALE:</label>
+        {% else %}
+        <input type="radio" id="gender" name="gender">
+          <label for="">MALE:</label><br>
+          <input type="radio" id="gender" name="gender" checked="true">
+          <label for="css">FEMALE:</label>
+        {% endif %}
+        <br><br>
+        <label for="address">ADDRESS:</label>
+        <textarea name="address" id="address">{{i.address}}</textarea>
+        <br>
+        <br>
+        <label for="country">SELECT COUNTRY:</label>
+        <select name="country" id="country">
+            <option value="{{i.india}}">INDIA</option>
+            <option value="{{i.america}}">AMERICA</option>
+            <option value="{{i.china}}">CHINA</option>
+            <option value="{{i.pakistan}}">PAKISTAN</option>
+         </select>
+         <br>
+         <br>
+         <label for="phonenumber">PHONENUMBER:</label>
+         <input type="text" name="phonenumber" id="phonenumber" value="{{i.phonenumber}}">
+         <br>
+         <br>
+         <label for="username">USERNAME:</label>
+         <input type="text" name="username" id="username" value="{{i.username}}"><th>@mymail.com </th>
+         <br>
+         <br>
+         <label for="password">PASSWORD:</label>
+         <input type="text" name="password" id="password" value="{{i.password}}">
+         <br>
+         <br>
+         <input type="submit" value="submit" >
+         {% endfor %}
+    </form>  
+</body>
+</html>
